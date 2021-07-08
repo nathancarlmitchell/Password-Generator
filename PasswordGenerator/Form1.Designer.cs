@@ -34,6 +34,7 @@
             this.checkBox_specialChar = new System.Windows.Forms.CheckBox();
             this.checkBox_complex = new System.Windows.Forms.CheckBox();
             this.checkBox_random = new System.Windows.Forms.CheckBox();
+            this.checkBox_dictionary = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // button_Generate
@@ -61,7 +62,7 @@
             this.button_copy.TabIndex = 2;
             this.button_copy.Text = "Copy to clipboard";
             this.button_copy.UseVisualStyleBackColor = true;
-            this.button_copy.Click += new System.EventHandler(this.button_copy_Click);
+            this.button_copy.Click += new System.EventHandler(this.Button_copy_Click);
             // 
             // checkBox_specialChar
             // 
@@ -93,11 +94,24 @@
             this.checkBox_random.Text = "More random";
             this.checkBox_random.UseVisualStyleBackColor = true;
             // 
+            // checkBox_dictionary
+            // 
+            this.checkBox_dictionary.AutoSize = true;
+            this.checkBox_dictionary.Checked = true;
+            this.checkBox_dictionary.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_dictionary.Location = new System.Drawing.Point(12, 141);
+            this.checkBox_dictionary.Name = "checkBox_dictionary";
+            this.checkBox_dictionary.Size = new System.Drawing.Size(95, 17);
+            this.checkBox_dictionary.TabIndex = 6;
+            this.checkBox_dictionary.Text = "Use Dictionary";
+            this.checkBox_dictionary.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 140);
+            this.ClientSize = new System.Drawing.Size(284, 195);
+            this.Controls.Add(this.checkBox_dictionary);
             this.Controls.Add(this.checkBox_random);
             this.Controls.Add(this.checkBox_complex);
             this.Controls.Add(this.checkBox_specialChar);
@@ -120,6 +134,7 @@
         private System.Windows.Forms.CheckBox checkBox_specialChar;
         private System.Windows.Forms.CheckBox checkBox_complex;
         private System.Windows.Forms.CheckBox checkBox_random;
+        private System.Windows.Forms.CheckBox checkBox_dictionary;
     }
 }
 
