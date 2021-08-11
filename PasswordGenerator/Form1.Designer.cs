@@ -35,6 +35,7 @@
             this.checkBox_complex = new System.Windows.Forms.CheckBox();
             this.checkBox_random = new System.Windows.Forms.CheckBox();
             this.checkBox_dictionary = new System.Windows.Forms.CheckBox();
+            this.button_mangle = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_Generate
@@ -106,11 +107,22 @@
             this.checkBox_dictionary.Text = "Use Dictionary";
             this.checkBox_dictionary.UseVisualStyleBackColor = true;
             // 
+            // button_mangle
+            // 
+            this.button_mangle.Location = new System.Drawing.Point(12, 164);
+            this.button_mangle.Name = "button_mangle";
+            this.button_mangle.Size = new System.Drawing.Size(260, 23);
+            this.button_mangle.TabIndex = 8;
+            this.button_mangle.Text = "Mangle";
+            this.button_mangle.UseVisualStyleBackColor = true;
+            this.button_mangle.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button_Mangle_MouseClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 195);
+            this.Controls.Add(this.button_mangle);
             this.Controls.Add(this.checkBox_dictionary);
             this.Controls.Add(this.checkBox_random);
             this.Controls.Add(this.checkBox_complex);
@@ -135,6 +147,7 @@
         private System.Windows.Forms.CheckBox checkBox_complex;
         private System.Windows.Forms.CheckBox checkBox_random;
         private System.Windows.Forms.CheckBox checkBox_dictionary;
+        private System.Windows.Forms.Button button_mangle;
     }
 }
 

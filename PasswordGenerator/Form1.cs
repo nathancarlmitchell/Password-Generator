@@ -105,6 +105,7 @@ namespace PasswordGenerator
             if (checkBox_specialChar.Checked) {
                 textBox1.Text += chrSpecial[rnd.Next(0, 11)];
             }
+
         }
 
         private void RandomChar()
@@ -150,9 +151,75 @@ namespace PasswordGenerator
             textBox1.Text += rnd.Next(0, 9);
         }
 
+        private string Mangle(string text)
+        {
+            
+            bool mangled = false;
+            int count = 0;
+            //text = text.ToLower();
+
+            while (mangled == false)
+            {
+                while (count < 25)
+                {
+                    count++;
+
+                    int case_number = rnd.Next(0, 5);
+
+                    switch (case_number)
+                    {
+                        case 0:
+                            if (text.Contains("a"))
+                            {
+                                count = 26;
+                                text = text.Replace("a", "@"); mangled = true;
+                            }
+                            break;
+                        case 1:
+                            if (text.Contains("e"))
+                            {
+                                count = 26;
+                                text = text.Replace("e", "3"); mangled = true; break;
+                            }
+                            break;
+                        case 2:
+                            if (text.Contains("i"))
+                            {
+                                count = 26;
+                                text = text.Replace("i", "1"); mangled = true; break;
+                            }
+                            break;
+                        case 3:
+                            if (text.Contains("s"))
+                            {
+                                count = 26;
+                                text = text.Replace("s", "$"); mangled = true; break;
+                            }
+                            break;
+                        case 4:
+                            if (text.Contains("o"))
+                            {
+                                count = 26;
+                                text = text.Replace("o", "0"); mangled = true; break;
+                            }
+                            break;
+                    }
+                }
+                mangled = true;
+                
+            }
+
+            return text;
+        }
+
         private void Button_copy_Click(object sender, EventArgs e)
         {
             Clipboard.SetDataObject(textBox1.Text, false, 5, 200);
+        }
+
+        private void button_Mangle_MouseClick(object sender, EventArgs e)
+        {
+            textBox1.Text = Mangle(textBox1.Text);
         }
     }
 }
