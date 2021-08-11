@@ -1,5 +1,0 @@
-I was able to get the passwordgenerator to install;  Reg key below was “MyComputer” changed from Disabled to Enabled
-
-Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\Security\TrustManager\PromptingLevel
-
-MyComputer	REG_SZ	-> Enabled
