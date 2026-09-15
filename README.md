@@ -1,3 +1,7 @@
+<p align="Left">
+  <img src="PasswordGenerator/Icon/icon-1024.png" width="96" alt="Password Generator icon">
+</p>
+
 # Password Generator
 
 A small Windows Forms tool for generating random passwords, with a few different generation
