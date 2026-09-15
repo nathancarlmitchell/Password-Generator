@@ -7,6 +7,9 @@
 A small Windows Forms tool for generating random passwords, with a few different generation
 modes plus an optional "mangle" (leetspeak) transform.
 
+![Platform](https://img.shields.io/badge/platform-Windows-blue)
+![.NET](https://img.shields.io/badge/.NET%20Framework-4.8-512BD4)
+
 ## Download
 
 Password Generator targets .NET Framework 4.8, which ships with Windows itself — nothing to
