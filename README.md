@@ -56,9 +56,8 @@ them yourself).
 | --- | --- | --- |
 | Default | Office-365-style: 4 letters + 4 digits | `Mune2297` |
 | Default + Increased complexity | Character length letters (8 by default) + 6 digits | `Dusesoqo468954` |
-| Use Dictionary *(on by default)* | Two common English words (Min/Max word length below) + 2 digits | `RehireIodine78` |
-| Default + More random | Fully randomized letters/digits, 8 characters | `iiIi3duE` |
-| Default + More random + Increased complexity | Fully randomized, 12 characters | `LEAVM10BiEnQ` |
+| Use Dictionary *(on by default)* | Number of words (2 by default, Min/Max word length below) + 2 digits | `RehireIodine78` |
+| Default + More random | Fully randomized letters/digits, Character length characters (8 by default) | `iiIi3duE` |
 
 - **Default / Use Dictionary** are mutually exclusive — checking one unchecks the other, since
   they're the two different sources a password's base letters/words come from. While Use
@@ -69,10 +68,14 @@ them yourself).
 - **Batch count** generates more than one password at once (1-100) — each line in the output
   box is an independent password in whatever mode is currently selected.
 - **Character length** (4-32, default 8) controls how many letters Increased complexity puts in
-  front of its fixed 6-digit suffix — only enabled while Increased complexity is checked.
+  front of its fixed 6-digit suffix, and also how many characters More random generates — but
+  it's only enabled (adjustable) while Increased complexity itself is checked; More random just
+  uses whatever it's currently set to.
 - **Min/Max word length** (3-9, default 3-7) controls which words `word-list.csv` supplies to
   Dictionary mode — the two spinners keep each other in sync so Min can never exceed Max, and
   both are only enabled while Use Dictionary is checked.
+- **Number of words** (1-5, default 2) controls how many dictionary words Dictionary mode
+  strings together before the trailing 2 digits — only enabled while Use Dictionary is checked.
 - **Mangle (M@NGL3)** applies a leetspeak-style substitution (`a`→`@`, `e`→`3`, `i`→`1`, `s`→`$`,
   `o`→`0`) to every matching character in each password as it's generated — checked once, it
   applies to every line of a batch, not just a single password.

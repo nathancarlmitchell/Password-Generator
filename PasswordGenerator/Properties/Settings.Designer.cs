@@ -161,5 +161,20 @@ namespace PasswordGenerator.Properties
                 this["MaxWordLength"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int WordCount
+        {
+            get
+            {
+                return ((int)(this["WordCount"]));
+            }
+            set
+            {
+                this["WordCount"] = value;
+            }
+        }
     }
 }

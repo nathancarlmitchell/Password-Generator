@@ -13,6 +13,12 @@ namespace PasswordGenerator
 {
     public partial class Form1 : Form
     {
+        // Matches numericUpDown_complexLength's own designer default Value
+        // — used as the fallback length for More random when that control
+        // is disabled (Increased complexity unchecked), since a disabled
+        // NumericUpDown still holds whatever value it last had.
+        private const int DefaultComplexLength = 8;
+
         public Form1()
         {
             InitializeComponent();
@@ -89,6 +95,15 @@ namespace PasswordGenerator
                 numericUpDown_maxWordLength.Value = maxWordLength;
             }
 
+            decimal wordCount = settings.WordCount;
+            if (
+                wordCount >= numericUpDown_wordCount.Minimum
+                && wordCount <= numericUpDown_wordCount.Maximum
+            )
+            {
+                numericUpDown_wordCount.Value = wordCount;
+            }
+
             // Reflects the restored checkbox state immediately — setting
             // Checked above only raises CheckedChanged when the value
             // actually flips from the designer default, so a restored
@@ -100,9 +115,12 @@ namespace PasswordGenerator
             UpdateComplexLengthEnabled();
         }
 
-        // Character length only matters while Increased complexity itself
-        // is checked — same "disable the dependent control" treatment as
-        // Min/Max word length under Use Dictionary.
+        // Character length is only user-adjustable while Increased
+        // complexity itself is checked — same "disable the dependent
+        // control" treatment as Min/Max word length under Use Dictionary.
+        // GenerateOnePassword()'s More random branch still reads this same
+        // control (see checkBox_random.Checked there), it just can't be
+        // changed from the UI unless Increased complexity is also checked.
         private void checkBox_complex_CheckedChanged(object sender, EventArgs e)
         {
             UpdateComplexLengthEnabled();
@@ -142,6 +160,8 @@ namespace PasswordGenerator
             numericUpDown_minWordLength.Enabled = enabled;
             label_maxWordLength.Enabled = enabled;
             numericUpDown_maxWordLength.Enabled = enabled;
+            label_wordCount.Enabled = enabled;
+            numericUpDown_wordCount.Enabled = enabled;
         }
 
         // Increased complexity/More random both take priority over
@@ -197,6 +217,7 @@ namespace PasswordGenerator
             settings.ComplexLength = (int)numericUpDown_complexLength.Value;
             settings.MinWordLength = (int)numericUpDown_minWordLength.Value;
             settings.MaxWordLength = (int)numericUpDown_maxWordLength.Value;
+            settings.WordCount = (int)numericUpDown_wordCount.Value;
 
             settings.Save();
         }
@@ -303,7 +324,17 @@ namespace PasswordGenerator
             // default branch also produced.)
             if (checkBox_random.Checked)
             {
-                int length = checkBox_complex.Checked ? 12 : 8;
+                // Shares numericUpDown_complexLength with the Increased
+                // complexity branch below, but that control is only enabled
+                // (and only meant to apply) while Increased complexity
+                // itself is checked — NumericUpDown keeps whatever value it
+                // last had even while disabled, so reading it here
+                // unconditionally would let a stale/disabled value silently
+                // affect More random. Falls back to the control's own
+                // designer default instead.
+                int length = checkBox_complex.Checked
+                    ? (int)numericUpDown_complexLength.Value
+                    : DefaultComplexLength;
                 for (int i = 0; i < length; i++)
                 {
                     AppendRandomChar(sb);
@@ -352,12 +383,13 @@ namespace PasswordGenerator
 
                 TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
 
-                sb.Append(
-                    textInfo.ToTitleCase(eligibleWords[SecureRandom.Next(0, eligibleWords.Count)])
-                );
-                sb.Append(
-                    textInfo.ToTitleCase(eligibleWords[SecureRandom.Next(0, eligibleWords.Count)])
-                );
+                int wordCount = (int)numericUpDown_wordCount.Value;
+                for (int i = 0; i < wordCount; i++)
+                {
+                    sb.Append(
+                        textInfo.ToTitleCase(eligibleWords[SecureRandom.Next(0, eligibleWords.Count)])
+                    );
+                }
                 sb.Append((char)('0' + SecureRandom.Next(0, 10)));
                 sb.Append((char)('0' + SecureRandom.Next(0, 10)));
             }
