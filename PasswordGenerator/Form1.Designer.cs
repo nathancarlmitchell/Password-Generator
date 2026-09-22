@@ -46,9 +46,10 @@ namespace PasswordGenerator
             this.numericUpDown_maxWordLength = new System.Windows.Forms.NumericUpDown();
             this.label_wordCount = new System.Windows.Forms.Label();
             this.numericUpDown_wordCount = new System.Windows.Forms.NumericUpDown();
+            this.label_numberCount = new System.Windows.Forms.Label();
+            this.numericUpDown_numberCount = new System.Windows.Forms.NumericUpDown();
             this.label_separatorBottom = new System.Windows.Forms.Label();
             this.checkBox_specialChar = new System.Windows.Forms.CheckBox();
-            this.checkBox_mangle = new System.Windows.Forms.CheckBox();
             this.label_batchCount = new System.Windows.Forms.Label();
             this.numericUpDown_batchCount = new System.Windows.Forms.NumericUpDown();
             this.groupBox_default.SuspendLayout();
@@ -57,6 +58,7 @@ namespace PasswordGenerator
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_minWordLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_maxWordLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_wordCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_numberCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_batchCount)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,9 +137,9 @@ namespace PasswordGenerator
             this.label_complexLength.AutoSize = true;
             this.label_complexLength.Location = new System.Drawing.Point(28, 44);
             this.label_complexLength.Name = "label_complexLength";
-            this.label_complexLength.Size = new System.Drawing.Size(88, 13);
+            this.label_complexLength.Size = new System.Drawing.Size(85, 13);
             this.label_complexLength.TabIndex = 1;
-            this.label_complexLength.Text = "Character length:";
+            this.label_complexLength.Text = "Total Characters";
             // 
             // numericUpDown_complexLength
             // 
@@ -192,9 +194,11 @@ namespace PasswordGenerator
             this.groupBox_dictionary.Controls.Add(this.numericUpDown_maxWordLength);
             this.groupBox_dictionary.Controls.Add(this.label_wordCount);
             this.groupBox_dictionary.Controls.Add(this.numericUpDown_wordCount);
+            this.groupBox_dictionary.Controls.Add(this.label_numberCount);
+            this.groupBox_dictionary.Controls.Add(this.numericUpDown_numberCount);
             this.groupBox_dictionary.Location = new System.Drawing.Point(25, 294);
             this.groupBox_dictionary.Name = "groupBox_dictionary";
-            this.groupBox_dictionary.Size = new System.Drawing.Size(232, 98);
+            this.groupBox_dictionary.Size = new System.Drawing.Size(232, 122);
             this.groupBox_dictionary.TabIndex = 9;
             this.groupBox_dictionary.TabStop = false;
             // 
@@ -203,9 +207,9 @@ namespace PasswordGenerator
             this.label_minWordLength.AutoSize = true;
             this.label_minWordLength.Location = new System.Drawing.Point(10, 20);
             this.label_minWordLength.Name = "label_minWordLength";
-            this.label_minWordLength.Size = new System.Drawing.Size(85, 13);
+            this.label_minWordLength.Size = new System.Drawing.Size(92, 13);
             this.label_minWordLength.TabIndex = 0;
-            this.label_minWordLength.Text = "Min word length:";
+            this.label_minWordLength.Text = "Min  Word Length";
             // 
             // numericUpDown_minWordLength
             // 
@@ -235,9 +239,9 @@ namespace PasswordGenerator
             this.label_maxWordLength.AutoSize = true;
             this.label_maxWordLength.Location = new System.Drawing.Point(10, 44);
             this.label_maxWordLength.Name = "label_maxWordLength";
-            this.label_maxWordLength.Size = new System.Drawing.Size(88, 13);
+            this.label_maxWordLength.Size = new System.Drawing.Size(92, 13);
             this.label_maxWordLength.TabIndex = 2;
-            this.label_maxWordLength.Text = "Max word length:";
+            this.label_maxWordLength.Text = "Max Word Length";
             // 
             // numericUpDown_maxWordLength
             // 
@@ -261,18 +265,18 @@ namespace PasswordGenerator
             0,
             0});
             this.numericUpDown_maxWordLength.ValueChanged += new System.EventHandler(this.numericUpDown_maxWordLength_ValueChanged);
-            //
+            // 
             // label_wordCount
-            //
+            // 
             this.label_wordCount.AutoSize = true;
             this.label_wordCount.Location = new System.Drawing.Point(10, 68);
             this.label_wordCount.Name = "label_wordCount";
-            this.label_wordCount.Size = new System.Drawing.Size(93, 13);
+            this.label_wordCount.Size = new System.Drawing.Size(67, 13);
             this.label_wordCount.TabIndex = 4;
-            this.label_wordCount.Text = "Number of words:";
-            //
+            this.label_wordCount.Text = "Word Count:";
+            // 
             // numericUpDown_wordCount
-            //
+            // 
             this.numericUpDown_wordCount.Location = new System.Drawing.Point(110, 65);
             this.numericUpDown_wordCount.Maximum = new decimal(new int[] {
             5,
@@ -292,11 +296,37 @@ namespace PasswordGenerator
             0,
             0,
             0});
-            //
+            // 
+            // label_numberCount
+            // 
+            this.label_numberCount.AutoSize = true;
+            this.label_numberCount.Location = new System.Drawing.Point(10, 92);
+            this.label_numberCount.Name = "label_numberCount";
+            this.label_numberCount.Size = new System.Drawing.Size(78, 13);
+            this.label_numberCount.TabIndex = 6;
+            this.label_numberCount.Text = "Number Count:";
+            // 
+            // numericUpDown_numberCount
+            // 
+            this.numericUpDown_numberCount.Location = new System.Drawing.Point(110, 89);
+            this.numericUpDown_numberCount.Maximum = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.numericUpDown_numberCount.Name = "numericUpDown_numberCount";
+            this.numericUpDown_numberCount.Size = new System.Drawing.Size(50, 20);
+            this.numericUpDown_numberCount.TabIndex = 7;
+            this.numericUpDown_numberCount.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
             // label_separatorBottom
             // 
             this.label_separatorBottom.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label_separatorBottom.Location = new System.Drawing.Point(12, 399);
+            this.label_separatorBottom.Location = new System.Drawing.Point(12, 423);
             this.label_separatorBottom.Name = "label_separatorBottom";
             this.label_separatorBottom.Size = new System.Drawing.Size(260, 2);
             this.label_separatorBottom.TabIndex = 10;
@@ -304,22 +334,12 @@ namespace PasswordGenerator
             // checkBox_specialChar
             // 
             this.checkBox_specialChar.AutoSize = true;
-            this.checkBox_specialChar.Location = new System.Drawing.Point(25, 407);
+            this.checkBox_specialChar.Location = new System.Drawing.Point(35, 439);
             this.checkBox_specialChar.Name = "checkBox_specialChar";
             this.checkBox_specialChar.Size = new System.Drawing.Size(145, 17);
             this.checkBox_specialChar.TabIndex = 11;
             this.checkBox_specialChar.Text = "Include special character";
             this.checkBox_specialChar.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_mangle
-            // 
-            this.checkBox_mangle.AutoSize = true;
-            this.checkBox_mangle.Location = new System.Drawing.Point(25, 430);
-            this.checkBox_mangle.Name = "checkBox_mangle";
-            this.checkBox_mangle.Size = new System.Drawing.Size(118, 17);
-            this.checkBox_mangle.TabIndex = 12;
-            this.checkBox_mangle.Text = "Mangle (M@NGL3)";
-            this.checkBox_mangle.UseVisualStyleBackColor = true;
             // 
             // label_batchCount
             // 
@@ -352,8 +372,7 @@ namespace PasswordGenerator
             this.AcceptButton = this.button_Generate;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(280, 459);
-            this.Controls.Add(this.checkBox_mangle);
+            this.ClientSize = new System.Drawing.Size(280, 470);
             this.Controls.Add(this.checkBox_specialChar);
             this.Controls.Add(this.label_separatorBottom);
             this.Controls.Add(this.groupBox_dictionary);
@@ -377,6 +396,7 @@ namespace PasswordGenerator
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_minWordLength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_maxWordLength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_wordCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_numberCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_batchCount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -403,9 +423,10 @@ namespace PasswordGenerator
         private System.Windows.Forms.NumericUpDown numericUpDown_maxWordLength;
         private System.Windows.Forms.Label label_wordCount;
         private System.Windows.Forms.NumericUpDown numericUpDown_wordCount;
+        private System.Windows.Forms.Label label_numberCount;
+        private System.Windows.Forms.NumericUpDown numericUpDown_numberCount;
         private System.Windows.Forms.Label label_separatorBottom;
         private System.Windows.Forms.CheckBox checkBox_specialChar;
-        private System.Windows.Forms.CheckBox checkBox_mangle;
         private System.Windows.Forms.Label label_batchCount;
         private System.Windows.Forms.NumericUpDown numericUpDown_batchCount;
     }

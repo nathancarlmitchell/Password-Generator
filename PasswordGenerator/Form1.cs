@@ -45,7 +45,6 @@ namespace PasswordGenerator
             var settings = Properties.Settings.Default;
 
             checkBox_specialChar.Checked = settings.IncludeSpecialChar;
-            checkBox_mangle.Checked = settings.Mangle;
             checkBox_complex.Checked = settings.IncreasedComplexity;
             checkBox_random.Checked = settings.MoreRandom;
             radioButton_dictionary.Checked = settings.UseDictionary;
@@ -102,6 +101,15 @@ namespace PasswordGenerator
             )
             {
                 numericUpDown_wordCount.Value = wordCount;
+            }
+
+            decimal numberCount = settings.NumberCount;
+            if (
+                numberCount >= numericUpDown_numberCount.Minimum
+                && numberCount <= numericUpDown_numberCount.Maximum
+            )
+            {
+                numericUpDown_numberCount.Value = numberCount;
             }
 
             // Reflects the restored checkbox state immediately — setting
@@ -162,6 +170,8 @@ namespace PasswordGenerator
             numericUpDown_maxWordLength.Enabled = enabled;
             label_wordCount.Enabled = enabled;
             numericUpDown_wordCount.Enabled = enabled;
+            label_numberCount.Enabled = enabled;
+            numericUpDown_numberCount.Enabled = enabled;
         }
 
         // Increased complexity/More random both take priority over
@@ -209,7 +219,6 @@ namespace PasswordGenerator
             var settings = Properties.Settings.Default;
 
             settings.IncludeSpecialChar = checkBox_specialChar.Checked;
-            settings.Mangle = checkBox_mangle.Checked;
             settings.IncreasedComplexity = checkBox_complex.Checked;
             settings.MoreRandom = checkBox_random.Checked;
             settings.UseDictionary = radioButton_dictionary.Checked;
@@ -218,6 +227,7 @@ namespace PasswordGenerator
             settings.MinWordLength = (int)numericUpDown_minWordLength.Value;
             settings.MaxWordLength = (int)numericUpDown_maxWordLength.Value;
             settings.WordCount = (int)numericUpDown_wordCount.Value;
+            settings.NumberCount = (int)numericUpDown_numberCount.Value;
 
             settings.Save();
         }
@@ -345,9 +355,8 @@ namespace PasswordGenerator
                 // Alternating consonant/vowel, same as before (first letter
                 // upper, rest lower) — just for however many letters
                 // numericUpDown_complexLength says instead of a hardcoded
-                // 8. Digit count stays fixed at 6, mirroring how Use
-                // Dictionary's Min/Max word length only scale the word
-                // portion, not the trailing digit suffix.
+                // 8. Digit count stays fixed at 6 here (unlike Use
+                // Dictionary's own Number of numbers).
                 int letterLength = (int)numericUpDown_complexLength.Value;
                 for (int i = 0; i < letterLength; i++)
                 {
@@ -390,8 +399,11 @@ namespace PasswordGenerator
                         textInfo.ToTitleCase(eligibleWords[SecureRandom.Next(0, eligibleWords.Count)])
                     );
                 }
-                sb.Append((char)('0' + SecureRandom.Next(0, 10)));
-                sb.Append((char)('0' + SecureRandom.Next(0, 10)));
+                int numberCount = (int)numericUpDown_numberCount.Value;
+                for (int i = 0; i < numberCount; i++)
+                {
+                    sb.Append((char)('0' + SecureRandom.Next(0, 10)));
+                }
             }
             else
             {
@@ -410,8 +422,7 @@ namespace PasswordGenerator
                 sb.Append(chrSpecial[SecureRandom.Next(0, chrSpecial.Length)]);
             }
 
-            string password = sb.ToString();
-            return checkBox_mangle.Checked ? Mangle(password) : password;
+            return sb.ToString();
         }
 
         // Loads the word list once and caches it — previously this ran on
@@ -472,44 +483,6 @@ namespace PasswordGenerator
                     sb.Append((char)('0' + SecureRandom.Next(0, 10)));
                     break;
             }
-        }
-
-        // Every occurrence of a, e, i, s, and o gets its leet-speak
-        // stand-in in one pass — one click now applies the whole set
-        // instead of needing repeated clicks to work through it one
-        // category at a time. The 5 substitutions target disjoint
-        // characters, so applying them in a fixed order (rather than the
-        // old random, one-per-click selection) produces the same result
-        // regardless of order.
-        private struct MangleRule
-        {
-            public readonly char From;
-            public readonly char To;
-
-            public MangleRule(char from, char to)
-            {
-                From = from;
-                To = to;
-            }
-        }
-
-        private static readonly MangleRule[] MangleRules =
-        {
-            new MangleRule('a', '@'),
-            new MangleRule('e', '3'),
-            new MangleRule('i', '1'),
-            new MangleRule('s', '$'),
-            new MangleRule('o', '0'),
-        };
-
-        private string Mangle(string text)
-        {
-            foreach (MangleRule rule in MangleRules)
-            {
-                text = text.Replace(rule.From.ToString(), rule.To.ToString());
-            }
-
-            return text;
         }
 
         private void Button_copy_Click(object sender, EventArgs e)

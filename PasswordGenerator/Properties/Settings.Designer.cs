@@ -45,21 +45,6 @@ namespace PasswordGenerator.Properties
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool Mangle
-        {
-            get
-            {
-                return ((bool)(this["Mangle"]));
-            }
-            set
-            {
-                this["Mangle"] = value;
-            }
-        }
-
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool IncreasedComplexity
         {
             get
@@ -174,6 +159,21 @@ namespace PasswordGenerator.Properties
             set
             {
                 this["WordCount"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int NumberCount
+        {
+            get
+            {
+                return ((int)(this["NumberCount"]));
+            }
+            set
+            {
+                this["NumberCount"] = value;
             }
         }
     }

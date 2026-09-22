@@ -5,7 +5,7 @@
 # Password Generator
 
 A small Windows Forms tool for generating random passwords, with a few different generation
-modes plus an optional "mangle" (leetspeak) transform.
+modes.
 
 ![Platform](https://img.shields.io/badge/platform-Windows-blue)
 ![.NET](https://img.shields.io/badge/.NET%20Framework-4.8-512BD4)
@@ -56,7 +56,7 @@ them yourself).
 | --- | --- | --- |
 | Default | Office-365-style: 4 letters + 4 digits | `Mune2297` |
 | Default + Increased complexity | Character length letters (8 by default) + 6 digits | `Dusesoqo468954` |
-| Use Dictionary *(on by default)* | Number of words (2 by default, Min/Max word length below) + 2 digits | `RehireIodine78` |
+| Use Dictionary *(on by default)* | Word Count (2 by default, Word Length - Min/Max below) + Number Count (2 by default) | `RehireIodine78` |
 | Default + More random | Fully randomized letters/digits, Character length characters (8 by default) | `iiIi3duE` |
 
 - **Default / Use Dictionary** are mutually exclusive — checking one unchecks the other, since
@@ -71,14 +71,13 @@ them yourself).
   front of its fixed 6-digit suffix, and also how many characters More random generates — but
   it's only enabled (adjustable) while Increased complexity itself is checked; More random just
   uses whatever it's currently set to.
-- **Min/Max word length** (3-9, default 3-7) controls which words `word-list.csv` supplies to
+- **Word Length - Min/Max** (3-9, default 3-7) controls which words `word-list.csv` supplies to
   Dictionary mode — the two spinners keep each other in sync so Min can never exceed Max, and
   both are only enabled while Use Dictionary is checked.
-- **Number of words** (1-5, default 2) controls how many dictionary words Dictionary mode
-  strings together before the trailing 2 digits — only enabled while Use Dictionary is checked.
-- **Mangle (M@NGL3)** applies a leetspeak-style substitution (`a`→`@`, `e`→`3`, `i`→`1`, `s`→`$`,
-  `o`→`0`) to every matching character in each password as it's generated — checked once, it
-  applies to every line of a batch, not just a single password.
+- **Word Count** (1-5, default 2) controls how many dictionary words Dictionary mode
+  strings together before the trailing digits — only enabled while Use Dictionary is checked.
+- **Number Count** (0-6, default 2) controls how many trailing digits Dictionary mode
+  appends after the words — only enabled while Use Dictionary is checked.
 - **Copy to clipboard** copies the current password (or the whole batch).
 
 Dictionary-mode words come from the [EFF long wordlist](https://www.eff.org/dice) for
