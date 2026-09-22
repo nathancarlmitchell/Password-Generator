@@ -55,9 +55,9 @@ them yourself).
 | Mode | Description | Example |
 | --- | --- | --- |
 | Default | Office-365-style: 4 letters + 4 digits | `Mune2297` |
-| Default + Increased complexity | Character length letters (8 by default) + 6 digits | `Dusesoqo468954` |
-| Use Dictionary *(on by default)* | Word Count (2 by default, Word Length - Min/Max below) + Number Count (2 by default) | `RehireIodine78` |
-| Default + More random | Fully randomized letters/digits, Character length characters (8 by default) | `iiIi3duE` |
+| Default + Increased complexity | Total Characters letters (8 by default) + 6 digits | `Dusesoqo468954` |
+| Use Dictionary *(on by default)* | Word Count (2 by default, Min Word Length/Max Word Length below) + Number Count (2 by default) | `RehireIodine78` |
+| Default + More random | Fully randomized letters/digits, Total Characters characters (8 by default) | `iiIi3duE` |
 
 - **Default / Use Dictionary** are mutually exclusive — checking one unchecks the other, since
   they're the two different sources a password's base letters/words come from. While Use
@@ -67,13 +67,13 @@ them yourself).
   password was just generated.
 - **Batch count** generates more than one password at once (1-100) — each line in the output
   box is an independent password in whatever mode is currently selected.
-- **Character length** (4-32, default 8) controls how many letters Increased complexity puts in
+- **Total Characters** (4-32, default 8) controls how many letters Increased complexity puts in
   front of its fixed 6-digit suffix, and also how many characters More random generates — but
   it's only enabled (adjustable) while Increased complexity itself is checked; More random just
   uses whatever it's currently set to.
-- **Word Length - Min/Max** (3-9, default 3-7) controls which words `word-list.csv` supplies to
-  Dictionary mode — the two spinners keep each other in sync so Min can never exceed Max, and
-  both are only enabled while Use Dictionary is checked.
+- **Min Word Length / Max Word Length** (3-9, default 3-7) controls which words `word-list.csv`
+  supplies to Dictionary mode — the two spinners keep each other in sync so Min can never exceed
+  Max, and both are only enabled while Use Dictionary is checked.
 - **Word Count** (1-5, default 2) controls how many dictionary words Dictionary mode
   strings together before the trailing digits — only enabled while Use Dictionary is checked.
 - **Number Count** (0-6, default 2) controls how many trailing digits Dictionary mode
